@@ -25,13 +25,18 @@ const mergeReducers = require('./')
 const mainReducer = mergeReducers(reducer1, reducer2)
 
 const incrementedState = mainReducer(initialState, 'INCREMENT')
-if (incrementedState.counter !== 1) {
-  console.log('Fail: Did not increment')
-  process.exitCode = 1
-}
-
 const decrementedState = mainReducer(initialState, 'DECREMENT')
-if (decrementedState.counter !== -1) {
-  console.log('Fail: Did not decrement')
-  process.exitCode = 2
-}
+
+const assert = require('assert').strict
+
+assert.deepStrictEqual(
+  incrementedState,
+  { counter: 1 },
+  "counter didn't increase"
+)
+
+assert.deepStrictEqual(
+  decrementedState,
+  { counter: -1 },
+  "counter didn't decrease"
+)

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "A function that merges reducers together.",
   "main": "index.js",
+  "files": [ "index.js" ],
   "scripts": {
     "test": "node test.js"
   },
